@@ -1,0 +1,130 @@
+@import 'globals.scss';
+
+// Mixins
+@mixin cta-theme($color) {
+  &.type-fill {
+    background: $color;
+
+    &:hover {
+      background: $color - 20;
+    }
+  }
+
+  &.type-stroke {
+    color: $color;
+
+    &:before {
+      border-color: $color;
+    }
+
+    &:hover {
+      color: #fff;
+
+      &:before {
+        background: $color;
+      }
+    }
+  }
+}
+
+.cta {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  min-width: 100px;
+
+  &-text,
+  &-icon {
+    display: block;
+  }
+
+  &-icon {
+    padding-right: 10px;
+  }
+
+  &-text {
+    height: 16px;
+
+    span {
+      display: block;
+      text-align: center;
+      line-height: 16px;
+      font-size: 13px;
+      width: 100%;
+    }
+  }
+}
+
+// Variants
+// ==============================
+.cta {
+  &.full {
+    display: block;
+  }
+
+  &.type-stroke {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.size-small {
+    padding: 14px 20px;
+  }
+}
+
+// Themes
+// ==============================
+.cta {
+  &.type-stroke {
+    &:before {
+      background: transparent;
+      border: 2px solid transparent;
+    }
+  }
+
+  &.type-fill {
+    span {
+      color: $white;
+    }
+  }
+
+  &.theme-green {
+    @include cta-theme($green);
+  }
+
+  &.theme-red {
+    @include cta-theme($red);
+  }
+
+  &.theme-blue {
+    @include cta-theme($blue);
+  }
+}
+
+// State
+// ==============================
+.cta {
+  &.disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}
+
+// Transitions
+// ==============================
+.cta {
+  transition-property: background, color, opacity;
+  transition-duration: .3s;
+
+  &:before {
+    transition-property: border-color, background;
+    transition-duration: .3s;
+  }
+}

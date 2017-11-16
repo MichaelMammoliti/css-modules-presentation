@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './app/index.js',
@@ -30,16 +31,43 @@ module.exports = {
               localIdentName: '[local]--[hash:base64:5]'
             },
           },
-          { loader: 'sass-loader' },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [
+                'app/styles',
+              ]
+            }
+          },
         ]
       }
     ]
   },
 
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    mainFiles: ['index', 'main'],
+    modules: [
+      'node_modules',
+    ],
+  },
+
+  plugins: [
+    new webpack.ProvidePlugin({
+      PropTypes: 'prop-types',
+      React: 'react',
+      ReactDOM: 'react-dom',
+    }),
+  ],
+
+  devtool: 'eval',
+  stats: "errors-only",
+
   devServer: {
     publicPath: '/',
     stats: {
       modules: false,
-    }
-  }
+    },
+  },
+
 };

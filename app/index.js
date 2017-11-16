@@ -1,1 +1,3 @@
-console.log('hello');
+import ExamplePage from './pages/Example';
+
+ReactDOM.render(<ExamplePage />, document.querySelector('#app'));
