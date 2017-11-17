@@ -1,3 +1,3 @@
-import ExamplePage from './pages/Example';
+import CtaExamplePage from './pages/CtaExample';
 
-ReactDOM.render(<ExamplePage />, document.querySelector('#app'));
+ReactDOM.render(<CtaExamplePage />, document.querySelector('#app'));

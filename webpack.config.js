@@ -21,6 +21,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.svg?$/,
+        include: path.join(__dirname, 'app'),
+        exclude: path.resolve(__dirname, 'node_modules'),
+        use: [
+          { loader: 'raw-loader' },
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [
           { loader: 'style-loader' },
@@ -28,19 +36,22 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[local]--[hash:base64:5]'
+              localIdentName: '[local]--[hash:base64:5]',
             },
+          },
+          {
+            loader: 'postcss-loader',
           },
           {
             loader: 'sass-loader',
             options: {
               includePaths: [
                 'app/styles',
-              ]
-            }
+              ],
+            },
           },
-        ]
-      }
+        ],
+      },
     ]
   },
 

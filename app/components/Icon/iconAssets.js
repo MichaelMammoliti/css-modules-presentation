@@ -1,13 +1,17 @@
-import fs from 'fs';
+const generateSVGIconObject = icons => {
+  const obj = {};
 
-const assetsDirectory = './assets';
+  icons.forEach(name =>
+    obj[name] = require(`./assets/${name}.svg`)
+  );
 
-const iconNames = fs
-  .readdirSync(assetsDirectory)
-  .reduce((acc, fileName) => ({
-    ...acc,
-    [fileName]: require(`${assetsDirectory}/${fileName}.svg`)
-  }))
-;
+  return obj;
+};
 
-export default iconNames;
+const iconNames = [
+  'close',
+  'edit',
+  'tick',
+];
+
+export default generateSVGIconObject(iconNames);

@@ -1,0 +1,11 @@
+.user-card {
+  display: block;
+
+  &-image,
+  &-details,
+  &-name,
+  &-description,
+  &-ctas {
+    display: block;
+  }
+}
