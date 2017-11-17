@@ -29,8 +29,4 @@ const UserCard = ({ text, icon }) =>
   </div>
 ;
 
-UserCard.propTypes = {
-
-};
-
 export default UserCard;
